@@ -1,5 +1,5 @@
 import os
-from pathlib import Path
+from pathlib import Path # import path class from the pathlib module
 
 list_of_files = [
     ".github/workflows/.gitkeep",
@@ -29,9 +29,9 @@ list_of_files = [
 ]
 
 for filepath in list_of_files:
-    filepath = Path(filepath)
-    filedir, filename = os.path.split(filepath)
-    if filedir != "":
+    filepath = Path(filepath)  #convert file path string to Path object for easier manipulation
+    filedir, filename = os.path.split(filepath) # spilit the filepath into the directory part(filedir) and file name part(Filename)
+    if filedir != "": # checks if the filedir is not empty string
         os.makedirs(filedir, exist_ok=True)
     if (not os.path.exists(filepath) or os.path.getsize(filepath) == 0):
        with open(filepath, "w") as f:
